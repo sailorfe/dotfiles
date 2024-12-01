@@ -1,0 +1,160 @@
+set $mod Mod4
+
+exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id picom -b
+exec always wezterm
+
+####################################
+#####        appearance       ######
+####################################
+
+font pango:Cozette 8
+for_window [class="^.*"] border pixel 0
+gaps inner 4px
+gaps outer 0px
+
+# MACBOOK
+
+bar {
+        status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+                -m title disk memory battery nic pipewire datetime \
+                -p title.max=80 title.scroll=true disk.format="{percent:05.02f}%" memory.usedonly=true nic.format="{intf} {state} {strength}" datetime.format="%Y-%m-%d %H:%M" \
+                -t perona
+        position top
+        font pango:Cozette 8 
+
+        colors {
+                background              #0e030b
+                focused_workspace       #ff94d4 #ff94d4 #1c0817
+                active_workspace        #ff72b3 #ff72b3 #fec8d5
+                inactive_workspace      #2a0e25 #2a0e25 #ecc9ef
+                urgent_workspace        #ed1d2f #ed1d2f #fec8d5
+                binding_mode            #fec8d5 #fec8d5 #d5396a
+        }
+}
+
+bindsym $mod+d exec dmenu_run -nb '#0e030b' -sf '#1c0817' -sb '#ff94d4' -nf '#fec8d5' -fn 'Cozette'
+
+exec_always --no-startup-id feh --bg-fill ~/m/img/wall/mihrona.jpg
+exec_always --no-startup-id brightnessctl set 72%
+
+# PROBOOK
+#
+# bar {
+#        status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+#                -m title disk memory battery nic pulseout datetime \
+#                -p title.max=80 title.scroll=true disk.format="{percent:05.02f}%" memory.usedonly=true nic.exclude=eth0,lo datetime.format="%Y-%m-%d %H:%M" \
+#                -t mugen
+#        position top
+#        font pango:Cozette 8 
+#
+#
+#        colors {
+#                background              #0d0917
+#                focused_workspace       #382e4f #382e4f #edf7f9
+#                active_workspace        #382e4f #382e4f #edf7f9
+#                inactive_workspace      #22173c #22173c #edf7f9
+#                urgent_workspace        #b00c03 #b00c03 #edf7f9
+#                binding_mode            #8466f5 #8466f5 #e5eaec
+#        }
+#       
+# }
+#
+# bindsym $mod+d exec dmenu_run -nb '#0d0917' -sf '#382e4f' -sb '#c2acff' -nf '#dcd7f0' -fn 'Cozette'
+#
+# exec_always --no-startup-id ./b/hdmi.sh
+# exec_always --no-startup-id feh --bg-fill ~/m/img/wall/mugen.jpg
+
+####################################
+####        keybindings         ####
+####################################
+
+# FOCUS
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# RESIZE
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# ARRANGE
+
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+bindsym $mod+x split h
+bindsym $mod+y split v
+bindsym $mod+f fullscreen toggle
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+space floating toggle
+bindsym $mod+Alt+space focus mode_toggle
+# bindsym $mod+a focus parent
+# bindsym $mod+d focus child
+
+# WORKPLACES
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# I3 STARTUP
+
+bindsym $mod+Return exec wezterm
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'идиотка!' -B 'да' 'i3-msg exit'"

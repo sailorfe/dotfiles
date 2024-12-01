@@ -1,0 +1,40 @@
+{
+	"icons": [ "awesome-fonts" ],
+	"colors": [
+		{
+			"background": "#0d0917",
+			"foreground": "#dcd7f0",
+			"black": "#1e1a31",
+			"gray": "#2e273e",
+			"moon": "#fd8cda",
+			"mercury": "#4d8fe5",
+			"mars": "#f72f39",
+			"jupiter": "#6ea722",
+			"venus": "#fce815",
+			"saturn": "#3a306f",
+			"white": "#b7beca"
+		}
+	],
+	"defaults": {
+			"separator-block-width": 0,
+			"fg": "foreground",
+			"bg": "background",
+			"warning": {
+				"fg": "mars",
+				"bg": "black"
+			},
+			"critical": {
+				"fg": "white",
+				"bg": "mars"
+			}
+	},
+	"cycle": [
+		{ "fg": "foreground", "bg": "background" },
+		{ "fg": "moon", "bg": "black" },
+		{ "fg": "mercury", "bg": "gray" },
+		{ "fg": "mars", "bg": "black" },
+		{ "fg": "jupiter", "bg": "gray" },
+		{ "fg": "venus", "bg": "black" },
+		{ "fg": "white", "bg": "saturn" }
+	]
+}
