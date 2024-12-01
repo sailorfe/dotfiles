@@ -1,0 +1,9 @@
+[user]
+	email = sailorfe@proton.me
+	name = sailorfe
+[core]
+	editor = vim~
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
