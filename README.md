@@ -12,13 +12,14 @@ config files for a linux ecosystem of a decade-old distro-hopping hp probook and
 │   │   └── themes/
 │   ├── picom.conf
 │   └── wezterm.lua
-├── .gitconfig
 ├── .vim/
 │   ├── ftplugin/
 │   │   └── markdown.vim
 │   └── vimrc
+├── .gitconfig
+├── .profile
 └── scripts
 ```
 
-- `.config`: X11/i3 with picom and feh
+- `.config`: X11/i3 with picom and feh. the highlight is probably my i3 config, which isn't much different from the generated one but arranged more sensibly, with dmenu and bumblebee-status config at the top.
 - `scripts`: used essentially like aliases, but i keep them as executable files out of habit
